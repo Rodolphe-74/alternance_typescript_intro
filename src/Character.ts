@@ -21,8 +21,10 @@ export class Character {
 
     attack(enemy: Enemy){
         let strike =Math.floor(Math.random()*100);
-        console.log(`The strike of the attack is ${strike}`);
         enemy.lifePoints = enemy.lifePoints-strike ;
-        console.log(`${enemy.name} has ${enemy.lifePoints} life points left`);
+        console.log(`\n
+            You stroke with a force of ${strike}\n
+            ${enemy.name} has ${enemy.lifePoints} points left\n
+            \n`)
     }
 }
