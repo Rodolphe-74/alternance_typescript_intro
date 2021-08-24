@@ -1,6 +1,7 @@
 import {Enemy} from './Enemy'
+import {Fighter} from "./Fighter";
 
-export class Character {
+export class Character implements Fighter {
     name: string;
     sex: string;
     lifePoints : number;
@@ -19,12 +20,16 @@ export class Character {
         `)
     }
 
-    attack(enemy: Enemy){
-        let strike =Math.floor(Math.random()*100);
-        enemy.lifePoints = enemy.lifePoints-strike ;
+    attack(enemy: Fighter){
+        let characterStrike =Math.floor(Math.random()*100);
+        enemy.takeDamage(characterStrike);
+    }
+
+    takeDamage(damage: number) {
+        this.lifePoints = this.lifePoints-(damage*0.5) ;
         console.log(`\n
-            You stroke with a force of ${strike}\n
-            ${enemy.name} has ${enemy.lifePoints} points left\n
+            The enemy stroke with a force of ${damage}\n
+            You have ${this.lifePoints} points left\n
             \n`)
     }
 }
