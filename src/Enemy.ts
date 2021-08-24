@@ -1,18 +1,20 @@
 import {Character} from "./Character";
 import {Fighter} from "./Fighter";
 
-export class Enemy implements Fighter{
+export abstract class Enemy implements Fighter{
 
     name: string;
     lifePoints : number;
+    attackCoeff: number;
 
-    constructor(name: string, lifePoints: number) {
+    protected constructor(name: string, lifePoints: number) {
         this.name = name;
         this.lifePoints = lifePoints;
+        this.attackCoeff = 1;
     }
 
     attack(character: Fighter){
-        let enemyStrike = Math.floor(Math.random()*100)*0.5;
+        let enemyStrike = Math.floor(Math.random()*50) * 0.5 * this.attackCoeff;
         character.takeDamage(enemyStrike);
     }
 
