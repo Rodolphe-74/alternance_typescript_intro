@@ -6,6 +6,7 @@ export class Warrior extends Character{
         super(name,sex,lifePoints);
         this.attackCoeff = 1;
     }
-
-
+    add(x:number,y:number):number{
+        return x + y;
+    }
 }
