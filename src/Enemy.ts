@@ -18,6 +18,7 @@ export abstract class Enemy implements Fighter{
         character.takeDamage(enemyStrike);
     }
 
+
     takeDamage(damage: number) {
         this.lifePoints = this.lifePoints - damage;
         console.log(`\n

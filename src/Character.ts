@@ -1,5 +1,6 @@
 import {Enemy} from './Enemy'
 import {Fighter} from "./Fighter";
+import {Weapon} from "./Weapon";
 
 export abstract class Character implements Fighter {
     name: string;
@@ -22,9 +23,14 @@ export abstract class Character implements Fighter {
         `)
     }
 
-    attack(enemy: Fighter){
-        let characterStrike =Math.floor(Math.random()*50) * this.attackCoeff;
-        enemy.takeDamage(characterStrike);
+    attack(enemy: Fighter, weapon?: Weapon){
+        if(weapon) {
+            enemy.takeDamage(weapon.damage);
+        }
+        else {
+            let characterStrike = Math.floor(Math.random() * 50) * this.attackCoeff;
+            enemy.takeDamage(characterStrike);
+        }
     }
 
     takeDamage(damage: number) {
