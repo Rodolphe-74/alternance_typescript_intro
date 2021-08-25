@@ -5,7 +5,7 @@ import {Weapon} from "./Weapon";
 export abstract class Character implements Fighter {
     name: string;
     sex: string;
-    lifePoints : number;
+    lifePoints: number;
     attackCoeff: number;
 
     protected constructor(name: string, sex: string, lifePoints: number) {
@@ -23,18 +23,17 @@ export abstract class Character implements Fighter {
         `)
     }
 
-    attack(enemy: Fighter, weapon?: Weapon){
-        if(weapon) {
+    attack(enemy: Fighter, weapon?: Weapon) {
+        if (weapon) {
             enemy.takeDamage(weapon.damage);
-        }
-        else {
+        } else {
             let characterStrike = Math.floor(Math.random() * 50) * this.attackCoeff;
             enemy.takeDamage(characterStrike);
         }
     }
 
     takeDamage(damage: number) {
-        this.lifePoints = this.lifePoints-(damage*0.5) ;
+        this.lifePoints = this.lifePoints - (damage * 0.5);
         console.log(`\n
             The enemy stroke with a force of ${damage}\n
             You have ${this.lifePoints} points left\n

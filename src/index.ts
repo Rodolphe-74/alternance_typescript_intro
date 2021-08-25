@@ -5,6 +5,7 @@ import {Warrior} from "./Warrior";
 import {Gobelin} from "./Gobelin";
 import {Dragon} from "./Dragon";
 import {Weapon} from "./Weapon";
+import axios from "axios";
 
 const prompts = require('prompts');
 
@@ -136,10 +137,25 @@ const fights = [
                 }
             }
         } else {
+            await getCitation();
             endGame = true;
             console.log('**************\n| Game Over ! |\n**************\n');
         }
     }
 
     // => response => { username, age, about }
+
+
 })();
+
+
+//Définition de la fonction qui va récupérer les citations grâce à axios
+async function getCitation() {
+    try {
+        const response = await axios.get('https://kaamelott.hotentic.com/api/random/personnage/Le%20Ma%C3%AEtre%20d\'Armes');
+        console.log(response.data.citation.citation);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
